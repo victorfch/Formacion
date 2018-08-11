@@ -7,7 +7,8 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { HeroesComponent } from './components/heroes/heroes.component';
 import { AboutComponent } from './components/about/about.component';
-import { FooterComponent } from './components/shared/footer/footer.component';
+import { HeroesService } from './services/heroes.service';
+
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -23,14 +24,15 @@ const routes: Routes = [
     HomeComponent,
     NavbarComponent,
     HeroesComponent,
-    AboutComponent,
-    FooterComponent
+    AboutComponent
   ],
   imports: [
     BrowserModule, 
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [
+    HeroesService
+  ],
   bootstrap: [AppComponent]
 })
 
