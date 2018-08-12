@@ -8,11 +8,13 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { HeroesComponent } from './components/heroes/heroes.component';
 import { AboutComponent } from './components/about/about.component';
 import { HeroesService } from './services/heroes.service';
+import { HeroeComponent } from './components/heroe/heroe.component';
 
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'heroes', component: HeroesComponent},
+  {path: 'heroes/heroe/:id', component: HeroeComponent},
   {path: 'about', component: AboutComponent},
   {path: 'home', component: HomeComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'home'}
@@ -24,7 +26,8 @@ const routes: Routes = [
     HomeComponent,
     NavbarComponent,
     HeroesComponent,
-    AboutComponent
+    AboutComponent,
+    HeroeComponent
   ],
   imports: [
     BrowserModule, 
