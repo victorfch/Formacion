@@ -9,12 +9,14 @@ import { HeroesComponent } from './components/heroes/heroes.component';
 import { AboutComponent } from './components/about/about.component';
 import { HeroesService } from './services/heroes.service';
 import { HeroeComponent } from './components/heroe/heroe.component';
+import { BuscadorComponent } from './components/buscador/buscador.component';
 
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'heroes', component: HeroesComponent},
   {path: 'heroes/heroe/:id', component: HeroeComponent},
+  {path: 'buscar/:termino', component: BuscadorComponent},
   {path: 'about', component: AboutComponent},
   {path: 'home', component: HomeComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'home'}
@@ -27,7 +29,8 @@ const routes: Routes = [
     NavbarComponent,
     HeroesComponent,
     AboutComponent,
-    HeroeComponent
+    HeroeComponent,
+    BuscadorComponent
   ],
   imports: [
     BrowserModule, 
