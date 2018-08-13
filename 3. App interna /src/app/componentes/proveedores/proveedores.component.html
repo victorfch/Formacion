@@ -1,0 +1,19 @@
+<h3>Listado de Proveedores</h3>
+<table class="table table-bordered table-striped" style="margin-top: 40px">
+    <thead>
+        <tr class="filters">
+            <th>Nombre</th>
+            <th>Correo electrónico</th>
+            <th>Telefono</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let proveedor of proveedores">
+            <td>{{proveedor.nombre}}</td>
+            <td>
+                <a href="mailto:{{proveedor.email}}"></a> {{proveedor.email}}</td>
+            <td>{{proveedor.telefono}}</td>
+        </tr>
+    </tbody>
+
+</table>
