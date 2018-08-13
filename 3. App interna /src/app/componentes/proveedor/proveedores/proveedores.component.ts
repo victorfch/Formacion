@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProveedoresService } from '../../servicios/proveedores.service';
+import { ProveedoresService } from '../../../servicios/proveedores.service';
 
 @Component({
   selector: 'app-proveedores',
