@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { PresupuestosService } from '../../../servicios/presupuestos.service';
+import { IfStmt } from '../../../../../node_modules/@angular/compiler';
 
 
 @Component({
@@ -14,11 +16,12 @@ export class AddpresComponent implements OnInit {
   tipo: any;
   iva: any = 0;
   total: any = 0;
+  mostrar:boolean = false;
 
 
 
-  constructor(private pf: FormBuilder) { }
-
+  constructor(private pf: FormBuilder, private _presupuestoService: PresupuestosService) { }
+  
   onChanges() {
     this.presupuestoForm.valueChanges.subscribe(valor => {
       this.base = valor.base;
@@ -58,6 +61,7 @@ export class AddpresComponent implements OnInit {
 
   onSubmit() {
     this.presupuesto = this.savePresupuesto();
+    this._presupuestoService.addPresupuesto(this.presupuesto);
   }
 
 }

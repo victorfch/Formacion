@@ -2,6 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { HttpClientModule } from "@angular/common/http";
+
+
+import { ProveedoresService } from './servicios/proveedores.service';
+import { PresupuestosService } from './servicios/presupuestos.service';
 
 import { AppComponent } from './app.component';
 import { ProveedoresComponent } from './componentes/proveedor/proveedores/proveedores.component';
@@ -9,6 +14,7 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
 import { NavegacionComponent } from './componentes/navegacion/navegacion.component';
 import { AddproveeComponent } from './componentes/proveedor/addprovee/addprovee.component';
 import { AddpresComponent } from './componentes/presupuestos/addpres/addpres.component';
+
 
 const routes: Routes = [
   {path: '', component: InicioComponent},
@@ -31,9 +37,13 @@ const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot(routes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    ProveedoresService,
+    PresupuestosService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
