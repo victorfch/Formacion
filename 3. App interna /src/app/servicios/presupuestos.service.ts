@@ -16,15 +16,10 @@ export class PresupuestosService {
   constructor(private http: HttpClient) { }
 
   addPresupuesto (presupuesto) {
-
-    return this.http.post(this.presURL, presupuesto, httpOptions )
-    .subscribe(
-      data=>{
-        console.log("Peticion POST realizada correctamente", data);
-    },
-    error=>{
-      console.log("Error", error);
-    });
+    return this.http.post(this.presURL, presupuesto, httpOptions);
+  }
+  getPresupuestos(){
+    return this.http.get(this.presURL);
   }
   
 }

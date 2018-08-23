@@ -61,7 +61,8 @@ export class AddpresComponent implements OnInit {
 
   onSubmit() {
     this.presupuesto = this.savePresupuesto();
-    this._presupuestoService.addPresupuesto(this.presupuesto);
+    this._presupuestoService.addPresupuesto(this.presupuesto).subscribe();
+    this.presupuestoForm.reset();
   }
 
 }

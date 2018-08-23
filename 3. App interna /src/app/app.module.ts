@@ -14,6 +14,7 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
 import { NavegacionComponent } from './componentes/navegacion/navegacion.component';
 import { AddproveeComponent } from './componentes/proveedor/addprovee/addprovee.component';
 import { AddpresComponent } from './componentes/presupuestos/addpres/addpres.component';
+import { PresupuestosComponent } from './componentes/presupuestos/presupuestos/presupuestos.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'proveedores', component: ProveedoresComponent},
   {path: 'addprovee', component: AddproveeComponent},
   {path: 'addpres', component: AddpresComponent},
+  {path: 'presupuestos', component: PresupuestosComponent},
   {path: '**', component: InicioComponent}
 ];
 
@@ -31,7 +33,8 @@ const routes: Routes = [
     InicioComponent,
     NavegacionComponent,
     AddproveeComponent,
-    AddpresComponent
+    AddpresComponent,
+    PresupuestosComponent
   ],
   imports: [
     BrowserModule,
