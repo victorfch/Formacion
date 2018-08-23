@@ -1,27 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { PresupuestosService } from '../../../servicios/presupuestos.service';
-
-
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
-  selector: 'app-addpres',
-  templateUrl: './addpres.component.html',
-  styleUrls: ['./addpres.component.css']
+  selector: 'app-editpres',
+  templateUrl: './editpres.component.html',
+  styleUrls: ['./editpres.component.css']
 })
-export class AddpresComponent implements OnInit {
+export class EditpresComponent implements OnInit {
   presupuestoForm: FormGroup;
   presupuesto: any;
   base: any;
   tipo: any;
   iva: any = 0;
   total: any = 0;
+  id: string;
 
+  constructor(private pf: FormBuilder,
+    private _presupuestoService: PresupuestosService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute) {
+      this.activatedRoute.params.subscribe(parametros => {
+        this.id = parametros['id'];
+        this._presupuestoService.getPresupuesto(this.id)
+          .subscribe(presupuesto => this.presupuesto = presupuesto)
+      });
+    }
 
-
-
-  constructor(private pf: FormBuilder, private _presupuestoService: PresupuestosService) { }
-  
   onChanges() {
     this.presupuestoForm.valueChanges.subscribe(valor => {
       this.base = valor.base;
@@ -31,7 +37,6 @@ export class AddpresComponent implements OnInit {
     });
 
   }
-
 
   ngOnInit() {
     this.presupuestoForm = this.pf.group({
@@ -61,7 +66,7 @@ export class AddpresComponent implements OnInit {
 
   onSubmit() {
     this.presupuesto = this.savePresupuesto();
-    this._presupuestoService.addPresupuesto(this.presupuesto).subscribe();
+    this._presupuestoService.putPresupuesto(this.presupuesto, this.id).subscribe();
     this.presupuestoForm.reset();
   }
 

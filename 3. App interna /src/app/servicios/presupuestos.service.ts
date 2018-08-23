@@ -12,6 +12,8 @@ const httpOptions = {
 })
 export class PresupuestosService {
   presURL='https://compras-app-c3c76.firebaseio.com/presupuestos.json';
+  preURL='https://compras-app-c3c76.firebaseio.com/presupuestos';
+  
 
   constructor(private http: HttpClient) { }
 
@@ -20,6 +22,15 @@ export class PresupuestosService {
   }
   getPresupuestos(){
     return this.http.get(this.presURL);
+  }
+
+  getPresupuesto(id$){
+    const url = `${this.preURL}/${id$}.json`;
+    return this.http.get(url);
+  }
+  putPresupuesto(presupuesto:any, id$:string) {
+    const url = `${this.preURL}/${id$}.json`;
+    return this.http.put(url,presupuesto,httpOptions);
   }
   
 }
